@@ -114,17 +114,17 @@ const Dashboard=()=>{
         </div>
         <div className="cardgrid">
           <div className="card">
-            <div className="cardicon"><img src='../public/total_exp.png' alt='Total Expenses' /></div>
+            <div className="cardicon"><img src='/total_exp.png' alt='Total Expenses' /></div>
             <p className="cardval">₹{totalExpenses}</p>
             <div className="cardlabel">Total Expenses</div>
           </div>
           <div className="card">
-            <div className="cardicon"><img src="../public/this_month.png" alt="this_month" /></div>
+            <div className="cardicon"><img src="/this_month.png" alt="this_month" /></div>
             <p className="cardval">₹{thisMonthExpenses}</p>
             <div className="cardlabel">This Month</div>
           </div>
           <div className="card">
-            <div className="cardicon"><img src="../public/budget_left .png" alt="" /></div>
+            <div className="cardicon"><img src="/budget_left .png" alt="" /></div>
             <p className="cardval">₹{budgetLeft}</p>
             <div className="cardlabel">
               Budget Left
