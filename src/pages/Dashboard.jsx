@@ -33,7 +33,7 @@ const Dashboard=()=>{
   const fetchExpenses=async()=>{
     try{
       const token=localStorage.getItem('token')
-      const res=await axios.get('http://localhost:3000/api/expense/allexpenses',
+      const res=await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/expense/allexpenses`,
         {headers:{Authorization:`Bearer ${token}`}})
       setExpenses(res.data)
     }catch(err){
@@ -62,7 +62,7 @@ const Dashboard=()=>{
   const handleDeleteExpense=async(id)=>{
     try{
       const token=localStorage.getItem('token')
-      await axios.delete(`http://localhost:3000/api/expense/deleteexpense/${id}`,{
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/expense/deleteexpense/${id}`,{
         headers:{Authorization:`Bearer ${token}`}
       })
       fetchExpenses()
