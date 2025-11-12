@@ -45,7 +45,7 @@ const Dashboard=()=>{
     e.preventDefault()
     try{
       const token=localStorage.getItem('token')
-      await axios.post('http://localhost:3000/api/expense/addexpense',
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/expense/addexpense`,
         {amount,category,description:desc},
         {headers:{Authorization:`Bearer ${token}`}})
       setAmount('')
