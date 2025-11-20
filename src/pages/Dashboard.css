@@ -106,19 +106,6 @@
   cursor: pointer;
 }
 
-.profilesec {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-right: 20px;
-}
-.profiletitle {
-  font-weight: 600;
-}
-.profileemail {
-  font-size: 1rem;
-  margin-bottom: 3px;
-}
 
 
 .expenseslist .closebtn:hover {
