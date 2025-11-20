@@ -189,22 +189,25 @@ const Dashboard=()=>{
                       <th>Amount</th>
                       <th>Category</th>
                       <th>Description</th>
+                      <th>Date</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {paginatedExpenses.map(e=>
+                    {paginatedExpenses.map(e =>
                       <tr key={e.id}>
                         <td>{e.amount}</td>
                         <td>{e.category}</td>
                         <td>{e.description}</td>
+                        <td>{e.date ? new Date(e.date).toLocaleDateString("en-IN") : ""}</td>
                         <td>
-                          <button className="deletebtn" onClick={()=>handleDeleteExpense(e.id)}>Delete</button>
+                          <button className="deletebtn" onClick={() => handleDeleteExpense(e.id)}>Delete</button>
                         </td>
                       </tr>
                     )}
                   </tbody>
                 </table>
+
                 {totalPages > 1 && (
                   <div className="pagination">
                     <button onClick={()=>setCurrentPage(p=>Math.max(p-1,1))} disabled={currentPage===1} className="pagebtn">Prev</button>
