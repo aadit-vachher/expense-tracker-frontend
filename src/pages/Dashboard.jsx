@@ -333,6 +333,21 @@ const Dashboard=()=>{
     setError('')
   }
 
+  const handleAddFavorite=async(e)=>{
+  try{
+    const token=localStorage.getItem('token')
+    await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/favorite/add`,
+      {
+        amount:e.amount,
+        category:e.category,
+        description:e.description,
+        date:e.date || e.createdAt
+      },
+      {headers:{Authorization:`Bearer ${token}`}})
+  }catch(err){
+    setError('Failed to add favourite')
+  }
+}
   const totalExpenses=expenses.reduce((sum,e)=>sum+Number(e.amount),0)
   const now = new Date()
   const thisMonthExpenses = expenses
@@ -361,6 +376,7 @@ const Dashboard=()=>{
           <h1 className="dashlogo">Expense Tracker</h1>
         </div>
         <div className="dashright">
+          <button className="favbtn" onClick={()=>navigate('/favourites')}>Favourites</button>
           <button className="logoutbtn" onClick={handleLogout}>Logout</button>
         </div>
       </div>
@@ -457,6 +473,7 @@ const Dashboard=()=>{
                       <th>Category</th>
                       <th>Description</th>
                       <th>Date</th>
+                      <th>Fav</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -467,6 +484,9 @@ const Dashboard=()=>{
                         <td>{e.category}</td>
                         <td>{e.description}</td>
                         <td>{e.date ? new Date(e.date).toLocaleDateString("en-IN") : ""}</td>
+                        <td>
+                          <button className="starbtn" onClick={()=>handleAddFavorite(e)}>★</button>
+                        </td>
                         <td>
                           <button className="deletebtn" onClick={() => handleDeleteExpense(e.id)}>Delete</button>
                         </td>
